@@ -1,5 +1,5 @@
 BloodlustMusic = { };
-
+local _, L = ...
 --the hard-coded, default list of songs
 BloodlustMusic.DefaultSongTable =
 {
@@ -92,11 +92,11 @@ BloodlustMusic.soundVolumeTable = {
 }
 
 BloodlustMusic.soundChannelNames = {
-    "Master",
-    "SFX",
-    "Music",
-    "Ambience",
-    "Dialog"
+    L["Master"],
+    L["SFX"],
+    L["Music"],
+    L["Ambience"],
+    L["Dialog"]
 }
 
 BloodlustMusic.soundEnabledTable = {
@@ -109,7 +109,7 @@ BloodlustMusic.soundEnabledTable = {
 
 BloodlustMusic.isSongPlaying = false
 BloodlustMusic.currentSongSpellID = 0
-BloodlustMusic.announcerHeader = "|cFFff2f00BloodlustMusic:|r "
+BloodlustMusic.announcerHeader = L["BloodlustMusic:"]
 
 --Create a slash command
 SLASH_BLOODLUSTMUSIC1, SLASH_BLOODLUSTMUSIC2 = '/blm', '/bloodlust';
@@ -129,7 +129,7 @@ local currentFilePath = " "
 local currentlyPlaying = " "
 local minute = 0
 local songNumber = 0
-local spellIDS = {80353, 32182, 2825, 264667, 146555, 178207, 256740, 230935, 309658, 350249, 368245, 390386, 381301, 386540, 441076}
+local spellIDS = {80353, 32182, 2825, 264667, 146555, 178207, 256740, 230935, 309658, 350249, 368245, 390386, 381301, 386540, 441076, 466904}
 --342242 not implemented yet
 
 C_Timer.After(.1, function() -- wait a bit
@@ -175,7 +175,7 @@ function StopSong(Showtext)
 	SetCVar(BloodlustMusic.soundVolumeTable[BloodlustSoundchannelNumber], BloodlustVolumecache)
   	SetCVar("Sound_NumChannels", BloodlustSoundchannelscache)
 	if (Showtext) then
-		print(BloodlustMusic.announcerHeader .. "Song Stopped")
+		print(BloodlustMusic.announcerHeader .. L["Song Stopped"])
 	end
 end
 
@@ -203,7 +203,7 @@ function SongPlayerRepeatable(songIndex, friendIndex)
 	end
 
 	--Preps and sets the announcement that a song is playing
-	currentlyPlaying = BloodlustMusic.announcerHeader ..  "Now Playing: "
+	currentlyPlaying = BloodlustMusic.announcerHeader .. L["Now Playing: "]
 
     if(enabled)
     then
@@ -222,9 +222,9 @@ end
 function SongPlayerPrimer(heroSpellID, specificSong, favoredFriend)
 	--Checks if a song is playing, or if the addon is muted
     if (BloodlustMusic.isSongPlaying) then
-        print(BloodlustMusic.announcerHeader .. "A song is already playing.")
+        print(BloodlustMusic.announcerHeader .. L["A song is already playing."])
     elseif(BloodlustMusicMute) then
-        print(BloodlustMusic.announcerHeader .. "No song was selected. BloodlustMusic is currently muted.")
+        print(BloodlustMusic.announcerHeader .. L["No song was selected. BloodlustMusic is currently muted."])
     else
 
 		--Resetting some variables
@@ -281,23 +281,23 @@ function SongPlayerPrimer(heroSpellID, specificSong, favoredFriend)
 			BloodlustSoundhandle = 0
 			StopSong(false)
   	      if(tonumber(GetCVar(BloodlustMusic.soundEnabledTable[BloodlustSoundchannelNumber]))== 0) then
-  	          print(BloodlustMusic.announcerHeader .. "No song was selected. Your " .. BloodlustMusic.soundChannelNames[BloodlustSoundchannelNumber] .. " volume channel is muted.")
+  	          print(BloodlustMusic.announcerHeader .. L["No song was selected. Your "] .. BloodlustMusic.soundChannelNames[BloodlustSoundchannelNumber] .. L[" volume channel is muted."])
   	      elseif (tonumber(GetCVar("Sound_EnableAllSound"))== 0) then
-  	          print(BloodlustMusic.announcerHeader .. "No song was selected. Your WoW sound is muted.")
+  	          print(BloodlustMusic.announcerHeader .. L["No song was selected. Your WoW sound is muted."])
   	      else
-			    print(BloodlustMusic.announcerHeader .. "No song was selected. The Addon can't find any songs, you've disabled too many or your computer's sound is muted. I think? idk man.")
+			    print(BloodlustMusic.announcerHeader .. L["No song was selected. The Addon can't find any songs, you've disabled too many or your computer's sound is muted. I think? idk man."])
   	      end
 		else
 			BloodlustMusic.isSongPlaying = true
 			BloodlustMusic.currentSongSpellID = heroSpellID
 			if favoredFriend > 0 and BloodlustFavoredFriendTable[favoredFriend]["Enabled"] and BloodlustFavoredFriendTable[favoredFriend]["Title"] ~= "" and BloodlustFavoredFriendTable[favoredFriend]["Path"] ~= "" then
-				friendMessage = BloodlustMusic.announcerHeader .. "Hero was cast by your Favored Friend: " ..  BloodlustFavoredFriendTable[favoredFriend]["Name"]
+				friendMessage = BloodlustMusic.announcerHeader .. L["Hero was cast by your Favored Friend: "] ..  BloodlustFavoredFriendTable[favoredFriend]["Name"]
 				--show a message Hero was cast by a favoredFriend
 				print(friendMessage)
 			end
 			--if statement here shouldnt fire, will fix later
 			if favoredFriend > 0  and not(BloodlustFavoredFriendTable[favoredFriend]["Enabled"]) and BloodlustFavoredFriendTable[favoredFriend]["Title"] ~= "" and BloodlustFavoredFriendTable[favoredFriend]["Path"] ~= "" then
-				friendMessage = BloodlustMusic.announcerHeader .. "Hero was cast by your Favored Friend: " ..  BloodlustFavoredFriendTable[favoredFriend]["Name"].. ". But the song wasn't enabled. Playing another song instead."
+				friendMessage = BloodlustMusic.announcerHeader .. L["Hero was cast by your Favored Friend: "] ..  BloodlustFavoredFriendTable[favoredFriend]["Name"].. L[". But the song wasn't enabled. Playing another song instead."]
 				print(friendMessage)
 			end
 			--show a message that a song is playing

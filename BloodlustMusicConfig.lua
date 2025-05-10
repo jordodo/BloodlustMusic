@@ -1,5 +1,5 @@
 BloodlustMusic = { };
-
+local _, L = ...
 --function to set the main table to default values
 local function BloodlustSongObjectTableDefault()
 	BloodlustSongObjectTable = {}
@@ -21,7 +21,7 @@ end
 --Creating a friendpanel to input changes to the friendlist
 local function FriendPanelCreation()
 	BloodlustMusic.FriendPanel = CreateFrame("Frame", "FriendPanel", UIParent, "UIPanelDialogTemplate")
-	BloodlustMusic.FriendPanel.text = "Testing Friends"
+	BloodlustMusic.FriendPanel.text = L["Testing Friends"]
 	BloodlustMusic.FriendPanel:SetSize(400, 400)
 	BloodlustMusic.FriendPanel:SetPoint("CENTER")
 	BloodlustMusic.FriendPanel:SetToplevel(true)
@@ -32,11 +32,11 @@ local function FriendPanelCreation()
 
 	BloodlustMusic.FriendPanel.Maintext = BloodlustMusic.FriendPanel:CreateFontString(nil, "ARTWORK", "GameFontNormal")
 	BloodlustMusic.FriendPanel.Maintext:SetPoint("TOP", BloodlustMusic.FriendPanel, "TOP", 0 , -9)
-	BloodlustMusic.FriendPanel.Maintext:SetText("Bloodlust Music")
+	BloodlustMusic.FriendPanel.Maintext:SetText(L["Bloodlust Music"])
 
 	BloodlustMusic.FriendPanel.Nametext = BloodlustMusic.FriendPanel:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
 	BloodlustMusic.FriendPanel.Nametext:SetPoint("TOP", BloodlustMusic.FriendPanel, "TOP", 0 , -40)
-	BloodlustMusic.FriendPanel.Nametext:SetText("Favored Friend Name: ")
+	BloodlustMusic.FriendPanel.Nametext:SetText(L["Favored Friend Name: "])
 	BloodlustMusic.FriendPanel.Nametext:SetWordWrap(true)
 
 	BloodlustMusic.FriendPanel.NameEditbox = CreateFrame("EditBox", "FriendPanelNameEditbox", BloodlustMusic.FriendPanel, "InputBoxTemplate")
@@ -52,7 +52,7 @@ local function FriendPanelCreation()
 
 	BloodlustMusic.FriendPanel.Titletext = BloodlustMusic.FriendPanel:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
 	BloodlustMusic.FriendPanel.Titletext:SetPoint("TOP", BloodlustMusic.FriendPanel.NameEditbox, "BOTTOM", 0 , -20)
-	BloodlustMusic.FriendPanel.Titletext:SetText("Favored Friend Song Title: ")
+	BloodlustMusic.FriendPanel.Titletext:SetText(L["Favored Friend Song Title: "])
 	BloodlustMusic.FriendPanel.Titletext:SetWordWrap(true)
 
 	BloodlustMusic.FriendPanel.TitleEditbox = CreateFrame("EditBox", "FriendPanelTitleEditbox", BloodlustMusic.FriendPanel, "InputBoxTemplate")
@@ -69,7 +69,7 @@ local function FriendPanelCreation()
 	BloodlustMusic.FriendPanel.Pathtext = BloodlustMusic.FriendPanel:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
 	BloodlustMusic.FriendPanel.Pathtext:SetPoint("TOP", BloodlustMusic.FriendPanel.TitleEditbox, "BOTTOM", 0, -20)
 	BloodlustMusic.FriendPanel.Pathtext:SetWidth(350)
-	BloodlustMusic.FriendPanel.Pathtext:SetText("Favored Friend filename: \n |cFFFFD100(NB: Needs filetype in the name, .ogg is most common. Also make sure the file for any custom song is in the 'customsongs' folder, not the 'sounds' folder)|r")
+	BloodlustMusic.FriendPanel.Pathtext:SetText(L["Favored Friend filename: \n (NB: Needs filetype in the name, .ogg is most common. Also make sure the file for any custom song is in the 'customsongs' folder, not the 'sounds' folder)"])
 	BloodlustMusic.FriendPanel.Pathtext:SetWordWrap(true)
 
 	BloodlustMusic.FriendPanel.PathEditbox = CreateFrame("EditBox", "FriendPanelPathEditbox", BloodlustMusic.FriendPanel, "InputBoxTemplate")
@@ -84,17 +84,17 @@ local function FriendPanelCreation()
 	end);
 
 	BloodlustMusic.FriendPanel.DefaultButton = CreateFrame("Button", "FriendPanelDefaultButton", BloodlustMusic.FriendPanel, "UIPanelButtonTemplate")
-	BloodlustMusic.FriendPanel.DefaultButton:SetText("Reset to Default")
+	BloodlustMusic.FriendPanel.DefaultButton:SetText(L["Reset to Default"])
 	BloodlustMusic.FriendPanel.DefaultButton:SetWidth(128)
 	BloodlustMusic.FriendPanel.DefaultButton:SetPoint("BOTTOM", BloodlustMusic.FriendPanel, "BOTTOM", 0, 100)
 
 	BloodlustMusic.FriendPanel.AcceptButton = CreateFrame("Button", "FriendPanelAcceptButton", BloodlustMusic.FriendPanel, "UIPanelButtonTemplate")
-	BloodlustMusic.FriendPanel.AcceptButton:SetText("Accept")
+	BloodlustMusic.FriendPanel.AcceptButton:SetText(L["Accept"])
 	BloodlustMusic.FriendPanel.AcceptButton:SetWidth(128)
 	BloodlustMusic.FriendPanel.AcceptButton:SetPoint("BOTTOMLEFT", BloodlustMusic.FriendPanel, "BOTTOMLEFT", 30, 30)
 
 	BloodlustMusic.FriendPanel.CancelButton = CreateFrame("Button", "FriendPanelCancelButton", BloodlustMusic.FriendPanel, "UIPanelButtonTemplate")
-	BloodlustMusic.FriendPanel.CancelButton:SetText("Cancel")
+	BloodlustMusic.FriendPanel.CancelButton:SetText(L["Cancel"])
 	BloodlustMusic.FriendPanel.CancelButton:SetWidth(128)
 	BloodlustMusic.FriendPanel.CancelButton:SetPoint("BOTTOMRIGHT", BloodlustMusic.FriendPanel, "BOTTOMRIGHT", -30, 30)
 	BloodlustMusic.FriendPanel.CancelButton:SetScript("OnClick", function()
@@ -106,7 +106,7 @@ end
 --Creating the panel to input changes to songs, massive spaghetti
 local function InputPanelCreation()
 	BloodlustMusic.InputPanel = CreateFrame("Frame", "InputPanel", UIParent, "UIPanelDialogTemplate")
-	BloodlustMusic.InputPanel.text = "Testing Input"
+	BloodlustMusic.InputPanel.text = L["Testing Input"]
 	BloodlustMusic.InputPanel:SetSize(400, 400)
 	BloodlustMusic.InputPanel:SetPoint("CENTER")
 	BloodlustMusic.InputPanel:SetToplevel(true)
@@ -117,11 +117,11 @@ local function InputPanelCreation()
 
 	BloodlustMusic.InputPanel.Maintext = BloodlustMusic.InputPanel:CreateFontString(nil, "ARTWORK", "GameFontNormal")
 	BloodlustMusic.InputPanel.Maintext:SetPoint("TOP", BloodlustMusic.InputPanel, "TOP", 0 , -9)
-	BloodlustMusic.InputPanel.Maintext:SetText("Bloodlust Music")
+	BloodlustMusic.InputPanel.Maintext:SetText(L["Bloodlust Music"])
 
 	BloodlustMusic.InputPanel.Titletext = BloodlustMusic.InputPanel:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
 	BloodlustMusic.InputPanel.Titletext:SetPoint("TOP", BloodlustMusic.InputPanel, "TOP", 0 , -80)
-	BloodlustMusic.InputPanel.Titletext:SetText("Change Title to: ")
+	BloodlustMusic.InputPanel.Titletext:SetText(L["Change Title to: "])
 	BloodlustMusic.InputPanel.Titletext:SetWordWrap(true)
 
 	BloodlustMusic.InputPanel.TitleEditbox = CreateFrame("EditBox", "InputPanelTitleEditbox", BloodlustMusic.InputPanel, "InputBoxTemplate")
@@ -138,7 +138,7 @@ local function InputPanelCreation()
 	BloodlustMusic.InputPanel.Pathtext = BloodlustMusic.InputPanel:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
 	BloodlustMusic.InputPanel.Pathtext:SetPoint("TOP", BloodlustMusic.InputPanel.TitleEditbox, "BOTTOM", 0, -50)
 	BloodlustMusic.InputPanel.Pathtext:SetWidth(350)
-	BloodlustMusic.InputPanel.Pathtext:SetText("Change Song filename to: \n |cFFFFD100(NB: Needs filetype in the name, .ogg is most common. Also make sure the file for any custom song is in the 'customsongs' folder, not the 'sounds' folder)|r")
+	BloodlustMusic.InputPanel.Pathtext:SetText(L["Favored Friend filename: \n (NB: Needs filetype in the name, .ogg is most common. Also make sure the file for any custom song is in the 'customsongs' folder, not the 'sounds' folder)"])
 	BloodlustMusic.InputPanel.Pathtext:SetWordWrap(true)
 
 	BloodlustMusic.InputPanel.PathEditbox = CreateFrame("EditBox", "InputPanelPathEditbox", BloodlustMusic.InputPanel, "InputBoxTemplate")
@@ -153,17 +153,17 @@ local function InputPanelCreation()
 	end);
 
 	BloodlustMusic.InputPanel.DefaultButton = CreateFrame("Button", "InputPanelDefaultButton", BloodlustMusic.InputPanel, "UIPanelButtonTemplate")
-	BloodlustMusic.InputPanel.DefaultButton:SetText("Reset to Default")
+	BloodlustMusic.InputPanel.DefaultButton:SetText(L["Reset to Default"])
 	BloodlustMusic.InputPanel.DefaultButton:SetWidth(128)
 	BloodlustMusic.InputPanel.DefaultButton:SetPoint("BOTTOM", BloodlustMusic.InputPanel, "BOTTOM", 0, 100)
 
 	BloodlustMusic.InputPanel.AcceptButton = CreateFrame("Button", "InputPanelAcceptButton", BloodlustMusic.InputPanel, "UIPanelButtonTemplate")
-	BloodlustMusic.InputPanel.AcceptButton:SetText("Accept")
+	BloodlustMusic.InputPanel.AcceptButton:SetText(L["Accept"])
 	BloodlustMusic.InputPanel.AcceptButton:SetWidth(128)
 	BloodlustMusic.InputPanel.AcceptButton:SetPoint("BOTTOMLEFT", BloodlustMusic.InputPanel, "BOTTOMLEFT", 30, 30)
 
 	BloodlustMusic.InputPanel.CancelButton = CreateFrame("Button", "InputPanelCancelButton", BloodlustMusic.InputPanel, "UIPanelButtonTemplate")
-	BloodlustMusic.InputPanel.CancelButton:SetText("Cancel")
+	BloodlustMusic.InputPanel.CancelButton:SetText(L["Cancel"])
 	BloodlustMusic.InputPanel.CancelButton:SetWidth(128)
 	BloodlustMusic.InputPanel.CancelButton:SetPoint("BOTTOMRIGHT", BloodlustMusic.InputPanel, "BOTTOMRIGHT", -30, 30)
 	BloodlustMusic.InputPanel.CancelButton:SetScript("OnClick", function()
@@ -175,7 +175,7 @@ end
 --creates a panel to confirm pending changes
 local function ConfirmPanelCreation()
 	BloodlustMusic.ConfirmPanel = CreateFrame("Frame", "ConfirmPanel", UIParent, "UIPanelDialogTemplate")
-	BloodlustMusic.ConfirmPanel.text = "Testing Input"
+	BloodlustMusic.ConfirmPanel.text = L["Testing Input"]
 	BloodlustMusic.ConfirmPanel:SetSize(400, 400)
 	BloodlustMusic.ConfirmPanel:SetPoint("CENTER")
 	BloodlustMusic.ConfirmPanel:SetToplevel(true)
@@ -186,7 +186,7 @@ local function ConfirmPanelCreation()
 
 	BloodlustMusic.ConfirmPanel.Maintext = BloodlustMusic.ConfirmPanel:CreateFontString(nil, "ARTWORK", "GameFontNormal")
 	BloodlustMusic.ConfirmPanel.Maintext:SetPoint("TOP", BloodlustMusic.ConfirmPanel, "TOP", 0 , -9)
-	BloodlustMusic.ConfirmPanel.Maintext:SetText("Bloodlust Music")
+	BloodlustMusic.ConfirmPanel.Maintext:SetText(L["Bloodlust Music"])
 
 	BloodlustMusic.ConfirmPanel.Infotext = BloodlustMusic.ConfirmPanel:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
 	BloodlustMusic.ConfirmPanel.Infotext:SetPoint("CENTER", 0, 50)
@@ -194,12 +194,12 @@ local function ConfirmPanelCreation()
 	BloodlustMusic.ConfirmPanel.Infotext:SetNonSpaceWrap(true)
 
 	BloodlustMusic.ConfirmPanel.AcceptButton = CreateFrame("Button", "InputPanelAcceptButton", BloodlustMusic.ConfirmPanel, "UIPanelButtonTemplate")
-	BloodlustMusic.ConfirmPanel.AcceptButton:SetText("Accept")
+	BloodlustMusic.ConfirmPanel.AcceptButton:SetText(L["Accept"])
 	BloodlustMusic.ConfirmPanel.AcceptButton:SetWidth(128)
 	BloodlustMusic.ConfirmPanel.AcceptButton:SetPoint("BOTTOMLEFT", BloodlustMusic.ConfirmPanel, "BOTTOMLEFT", 30, 30)
 
 	BloodlustMusic.ConfirmPanel.CancelButton = CreateFrame("Button", "InputPanelCancelButton", BloodlustMusic.ConfirmPanel, "UIPanelButtonTemplate")
-	BloodlustMusic.ConfirmPanel.CancelButton:SetText("Cancel")
+	BloodlustMusic.ConfirmPanel.CancelButton:SetText(L["Cancel"])
 	BloodlustMusic.ConfirmPanel.CancelButton:SetWidth(128)
 	BloodlustMusic.ConfirmPanel.CancelButton:SetPoint("BOTTOMRIGHT", BloodlustMusic.ConfirmPanel, "BOTTOMRIGHT", -30, 30)
 	BloodlustMusic.ConfirmPanel.CancelButton:SetScript("OnClick", function()
@@ -272,11 +272,11 @@ local function FriendPanel(index)
 	BloodlustMusic.FriendPanel.PathEditbox:SetText(BloodlustFavoredFriendTable[index]["Path"])
 
 	BloodlustMusic.FriendPanel.DefaultButton:SetScript("OnClick", function()
-		ConfirmPanel(index, "DefaultFriend", "\n \nThis will set this song back to its default, hard-coded values. \n \n|cFFFFD100'" .. BloodlustFavoredFriendTable[index]["Name"] .. "'|r\n turns back to \n|cFFFFD100'" .. BloodlustMusic.DefaultFavoredFriendTable[index]["Name"] .. "'|r \n \n \n|cFFFFD100'" .. BloodlustFavoredFriendTable[index]["Title"] .. "'|r\n turns back to \n|cFFFFD100'" .. BloodlustMusic.DefaultFavoredFriendTable[index]["Title"] .. "'|r \n \n \n|cFFFFD100'" .. BloodlustFavoredFriendTable[index]["Path"] .. "'|r\n turns back to \n|cFFFFD100'" .. BloodlustMusic.DefaultFavoredFriendTable[index]["Path"] .. "'|r\n \n \n Accept and reload?")
+		ConfirmPanel(index, "DefaultFriend", L["\n \nThis will set this song back to its default, hard-coded values. \n \n'"] .. BloodlustFavoredFriendTable[index]["Name"] .. L["'|r\n turns back to \n'"] .. BloodlustMusic.DefaultFavoredFriendTable[index]["Name"] .. "'|r \n \n \n|cFFFFD100'" .. BloodlustFavoredFriendTable[index]["Title"] .. L["'\n turns back to \n'"] .. BloodlustMusic.DefaultFavoredFriendTable[index]["Title"] .. "'|r \n \n \n|cFFFFD100'" .. BloodlustFavoredFriendTable[index]["Path"] .. L["'\n turns back to \n'"] .. BloodlustMusic.DefaultFavoredFriendTable[index]["Path"] .. L["'\n \n \n Accept and reload?"])
 	end)
 
 	BloodlustMusic.FriendPanel.AcceptButton:SetScript("OnClick", function()
-		ConfirmPanel(index, "AcceptFriend", "\n \nPending changes: \n \n|cFFFFD100'" .. BloodlustFavoredFriendTable[index]["Name"] .. "'|r\n becomes \n|cFFFFD100'" .. tostring(BloodlustMusic.FriendPanel.NameEditbox:GetText()) .. "'|r \n \n \n|cFFFFD100'" .. BloodlustFavoredFriendTable[index]["Title"] .. "'|r\n  becomes  \n|cFFFFD100'" .. tostring(BloodlustMusic.FriendPanel.TitleEditbox:GetText()) .. "'|r \n \n \n|cFFFFD100'" .. BloodlustFavoredFriendTable[index]["Path"] .. "'|r\n  becomes  \n|cFFFFD100'" .. tostring(BloodlustMusic.FriendPanel.PathEditbox:GetText()) .. "'|r\n \n \n Accept and reload?")
+		ConfirmPanel(index, "AcceptFriend", L["\n \nPending changes: \n \n'"] .. BloodlustFavoredFriendTable[index]["Name"] .. L["'\n becomes \n'"] .. tostring(BloodlustMusic.FriendPanel.NameEditbox:GetText()) .. "'|r \n \n \n|cFFFFD100'" .. BloodlustFavoredFriendTable[index]["Title"] .. L["'\n becomes \n'"] .. tostring(BloodlustMusic.FriendPanel.TitleEditbox:GetText()) .. "'|r \n \n \n|cFFFFD100'" .. BloodlustFavoredFriendTable[index]["Path"] .. L["'\n becomes \n'"] .. tostring(BloodlustMusic.FriendPanel.PathEditbox:GetText()) .. L["'\n \n \n Accept and reload?"])
 	end)
 
 	BloodlustMusic.FriendPanel:Show()
@@ -292,11 +292,11 @@ local function InputPanel(index)
 	BloodlustMusic.InputPanel.PathEditbox:SetText(BloodlustSongObjectTable[index]["Path"])
 
 	BloodlustMusic.InputPanel.DefaultButton:SetScript("OnClick", function()
-		ConfirmPanel(index, "DefaultSong", "This will set this song back to its default, hard-coded values. \n \n \n|cFFFFD100'" .. BloodlustSongObjectTable[index]["Title"] .. "'|r\n turns back to \n|cFFFFD100'" .. BloodlustMusic.DefaultSongTable[index]["Title"] .. "'|r \n \n \n|cFFFFD100'" .. BloodlustSongObjectTable[index]["Path"] .. "'|r\n turns back to \n|cFFFFD100'" .. BloodlustMusic.DefaultSongTable[index]["Path"] .. "'|r\n \n \n Accept and reload?")
+		ConfirmPanel(index, "DefaultSong", L["This will set this song back to its default, hard-coded values. \n \n \n'"] .. BloodlustSongObjectTable[index]["Title"] .. L["'\n turns back to \n'"] .. BloodlustMusic.DefaultSongTable[index]["Title"] .. "'|r \n \n \n|cFFFFD100'" .. BloodlustSongObjectTable[index]["Path"] .. L["'\n turns back to \n'"] .. BloodlustMusic.DefaultSongTable[index]["Path"] .. L["'\n \n \n Accept and reload?"])
 	end)
 
 	BloodlustMusic.InputPanel.AcceptButton:SetScript("OnClick", function()
-		ConfirmPanel(index, "Accept", "Pending changes: \n \n \n|cFFFFD100'" .. BloodlustSongObjectTable[index]["Title"] .. "'|r\n becomes \n|cFFFFD100'" .. tostring(BloodlustMusic.InputPanel.TitleEditbox:GetText()) .. "'|r \n \n \n|cFFFFD100'" .. BloodlustSongObjectTable[index]["Path"] .. "'|r\n  becomes  \n|cFFFFD100'" .. tostring(BloodlustMusic.InputPanel.PathEditbox:GetText()) .. "'|r\n \n \n Accept and reload?")
+		ConfirmPanel(index, "Accept", L["Pending changes: \n \n \n'"] .. BloodlustSongObjectTable[index]["Title"] .. L["'\n becomes \n'"] .. tostring(BloodlustMusic.InputPanel.TitleEditbox:GetText()) .. "'|r \n \n \n|cFFFFD100'" .. BloodlustSongObjectTable[index]["Path"] .. L["'\n becomes \n'"] .. tostring(BloodlustMusic.InputPanel.PathEditbox:GetText()) .. L["'\n \n \n Accept and reload?"])
 	end)
 
 	BloodlustMusic.InputPanel:Show()
@@ -339,7 +339,7 @@ local function PanelCreation()
 	--Titles and descriptions
     local BloodlustTitle = BloodlustMusic.panel.scrollChild:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
     BloodlustTitle:SetPoint("TOPLEFT", 16, -16)
-    BloodlustTitle:SetText("Bloodlust Music")
+    BloodlustTitle:SetText(L["Bloodlust Music"])
 
     local BloodlustSubtitle = BloodlustMusic.panel.scrollChild:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
     BloodlustSubtitle:SetPoint("TOPLEFT", BloodlustTitle, "RIGHT", 5, 3)
@@ -349,7 +349,7 @@ local function PanelCreation()
     BloodlustDescription:SetPoint("TOPLEFT", BloodlustTitle, "BOTTOMLEFT", 0, -8)
 	BloodlustDescription:SetWidth(BloodlustMusic.panel.scrollFrame:GetWidth() - scrollbarOffset)
 	BloodlustDescription:SetJustifyH("LEFT")
-	BloodlustDescription:SetText("A stupid Addon to play music during Hero, Bloodlust, Primal Rage, etc. You can change a couple of settings below to your liking. Some barebones information is provided next to the corresponding option. For a more in depth explanation, please refer to the description of the addon at: https://www.curseforge.com/wow/addons/bloodlustmusic . Thanks and enjoy!")
+	BloodlustDescription:SetText(L["A stupid Addon to play music during Hero, Bloodlust, Primal Rage, etc. You can change a couple of settings below to your liking. Some barebones information is provided next to the corresponding option. For a more in depth explanation, please refer to the description of the addon at: https://www.curseforge.com/wow/addons/bloodlustmusic . Thanks and enjoy!"])
 
 
 	--Volume Slider during Hero
@@ -357,7 +357,7 @@ local function PanelCreation()
     BloodlustSliderDescription:SetPoint("TOPLEFT", BloodlustTitle, "BOTTOMLEFT", 0, -180)
 	BloodlustSliderDescription:SetWidth(BloodlustMusic.panel.scrollFrame:GetWidth() - scrollbarOffset)
 	BloodlustSliderDescription:SetJustifyH("LEFT")
-	BloodlustSliderDescription:SetText("Use the Slider menu below to set how loud the music during Hero should be. Don't want the volume raised? Enter a number lower or equal to your current volume for your soundchannel. You can view this under Main menu -> System -> Sound.")
+	BloodlustSliderDescription:SetText(L["Use the Slider menu below to set how loud the music during Hero should be. Don't want the volume raised? Enter a number lower or equal to your current volume for your soundchannel. You can view this under Main menu -> System -> Sound."])
 	
 	local BloodlustSlider = CreateFrame("Slider", "BloodlustSliderGlobalName", BloodlustMusic.panel.scrollChild, "OptionsSliderTemplate")
 	BloodlustSlider:SetPoint("TOPLEFT", BloodlustSliderDescription, "BOTTOMLEFT", 10, -35)
@@ -373,7 +373,7 @@ local function PanelCreation()
 	BloodlustSlider:SetValue(BloodlustChannelVolume)
     BloodlustSlider.low:SetText("0%")
     BloodlustSlider.high:SetText("100%")
-	BloodlustSlider.tooltipText = "Volume of " .. BloodlustMusic.soundChannelNames[BloodlustSoundchannelNumber] .. " soundchannel during Hero"
+	BloodlustSlider.tooltipText = L["Volume of "] .. BloodlustMusic.soundChannelNames[BloodlustSoundchannelNumber] .. L[" soundchannel during Hero"]
 	BloodlustSlider:SetScript("OnValueChanged", function(self,event,arg1)
 		BloodlustChannelVolume = math.floor(BloodlustSlider:GetValue()*100)/100
 		BloodlustSlider.text:SetText(math.floor(BloodlustChannelVolume*100) .. "%")
@@ -384,7 +384,7 @@ local function PanelCreation()
 	local BloodlustSliderLabel = BloodlustMusic.panel.scrollChild:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall")
     BloodlustSliderLabel:SetPoint("LEFT", BloodlustSlider, "TOPLEFT", -1.5, 20)
     BloodlustSliderLabel:SetNonSpaceWrap(true)
-	BloodlustSliderLabel:SetText(BloodlustMusic.soundChannelNames[BloodlustSoundchannelNumber] .. " volume during Hero")
+	BloodlustSliderLabel:SetText(BloodlustMusic.soundChannelNames[BloodlustSoundchannelNumber] .. L[" volume during Hero"])
 
 
 	--Dropdown to select Soundchannel
@@ -392,12 +392,12 @@ local function PanelCreation()
     BloodlustDropdownDescription:SetPoint("TOPLEFT", BloodlustDescription, "BOTTOMLEFT", 0, -30)
 	BloodlustDropdownDescription:SetWidth(BloodlustMusic.panel.scrollFrame:GetWidth() - scrollbarOffset)
 	BloodlustDropdownDescription:SetJustifyH("LEFT")
-	BloodlustDropdownDescription:SetText("Use the Dropdown menu below to set what soundchannel you want Hero to play on. Unsure? Dialog is recommended, Master is more fun.")
+	BloodlustDropdownDescription:SetText(L["Use the Dropdown menu below to set what soundchannel you want Hero to play on. Unsure? Dialog is recommended, Master is more fun."])
 
 	local BloodlustDropdown = CreateFrame("FRAME", "BloodlustDropdown", BloodlustMusic.panel.scrollChild, "UIDropDownMenuTemplate")
 	BloodlustDropdown:SetPoint("TOPLEFT", BloodlustDropdownDescription, "BOTTOMLEFT", -10, -20)
 	UIDropDownMenu_SetWidth(BloodlustDropdown, 200)
-	UIDropDownMenu_SetText(BloodlustDropdown, "Current soundchannel: " .. BloodlustMusic.soundChannelNames[BloodlustSoundchannelNumber])
+	UIDropDownMenu_SetText(BloodlustDropdown, L["Current soundchannel: "] .. BloodlustMusic.soundChannelNames[BloodlustSoundchannelNumber])
 
 	UIDropDownMenu_Initialize(BloodlustDropdown, function(self, level, menuList)
 		local info = UIDropDownMenu_CreateInfo()
@@ -413,15 +413,15 @@ local function PanelCreation()
 
 	function BloodlustDropdown:SetValue(newValue)
 		if(BloodlustMusic.isSongPlaying) then
-			print(BloodlustMusic.announcerHeader .. "Changing soundchannel prevented, please do so after hero has ended")
+			print(BloodlustMusic.announcerHeader .. L["Changing soundchannel prevented, please do so after hero has ended"])
 			CloseDropDownMenus()
 		else
 			BloodlustSoundchannelNumber = newValue
-			UIDropDownMenu_SetText(BloodlustDropdown, "Current soundchannel: " .. BloodlustMusic.soundChannelNames[BloodlustSoundchannelNumber])
-			print(BloodlustMusic.announcerHeader .. "Soundchannel changed to: " .. BloodlustMusic.soundChannelNames[BloodlustSoundchannelNumber])
+			UIDropDownMenu_SetText(BloodlustDropdown, L["Current soundchannel: "] .. BloodlustMusic.soundChannelNames[BloodlustSoundchannelNumber])
+			print(BloodlustMusic.announcerHeader .. L["Soundchannel changed to: "] .. BloodlustMusic.soundChannelNames[BloodlustSoundchannelNumber])
 			BloodlustVolumecache = tonumber(GetCVar(BloodlustMusic.soundVolumeTable[BloodlustSoundchannelNumber]))
-			BloodlustSlider.tooltipText = "Volume of " .. BloodlustMusic.soundChannelNames[BloodlustSoundchannelNumber] .. " soundchannel during Hero"
-			BloodlustSliderLabel:SetText(BloodlustMusic.soundChannelNames[BloodlustSoundchannelNumber] .. " volume during Hero")
+			BloodlustSlider.tooltipText = L["Volume of "] .. BloodlustMusic.soundChannelNames[BloodlustSoundchannelNumber] .. L[" soundchannel during Hero"]
+			BloodlustSliderLabel:SetText(BloodlustMusic.soundChannelNames[BloodlustSoundchannelNumber] .. L[" volume during Hero"])
 			CloseDropDownMenus()
 		end
 	end
@@ -429,7 +429,7 @@ local function PanelCreation()
 	local BloodlustDropDownLabel = BloodlustMusic.panel.scrollChild:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall")
     BloodlustDropDownLabel:SetPoint("LEFT", BloodlustDropdown, "TOPLEFT", 20, 7)
     BloodlustDropDownLabel:SetNonSpaceWrap(true)
-	BloodlustDropDownLabel:SetText("Sound Channel")
+	BloodlustDropDownLabel:SetText(L["Sound Channel"])
 
 
 	--Checkbox to increase the # of allowed sounds or "soundchannels"
@@ -437,13 +437,13 @@ local function PanelCreation()
     BloodlustMaxSoundchannelDescription:SetPoint("TOPLEFT", BloodlustSlider, "BOTTOMLEFT", -10, -20)
 	BloodlustMaxSoundchannelDescription:SetWidth(BloodlustMusic.panel.scrollFrame:GetWidth() - scrollbarOffset)
 	BloodlustMaxSoundchannelDescription:SetJustifyH("LEFT")
-	BloodlustMaxSoundchannelDescription:SetText("Sometimes the music will cut out if stuff gets too busy. You can try to prevent this by checking the box below. This will make sure WoW can play more sounds at the same time, by upping the number of allowed soundchannels. Afterwards it will put it back to normal levels. Highly recommended to check the addon description for more info.")
+	BloodlustMaxSoundchannelDescription:SetText(L["Sometimes the music will cut out if stuff gets too busy. You can try to prevent this by checking the box below. This will make sure WoW can play more sounds at the same time, by upping the number of allowed soundchannels. Afterwards it will put it back to normal levels. Highly recommended to check the addon description for more info."])
 
 	local MaxSoundchannelCheckbox = CreateFrame("CheckButton", "MaxSoundchannelCheckbox", BloodlustMusic.panel.scrollChild, "UICheckButtonTemplate")
 	MaxSoundchannelCheckbox:SetPoint("TOPLEFT", BloodlustMaxSoundchannelDescription, "BOTTOMLEFT", -0, -10)
 	MaxSoundchannelCheckbox:SetSize(27, 27)
 	MaxSoundchannelCheckbox.text:SetFontObject("GameFontNormal")
-	MaxSoundchannelCheckbox.text:SetText("Set Max number of soundchannels during Hero to 128?")
+	MaxSoundchannelCheckbox.text:SetText(L["Set Max number of soundchannels during Hero to 128?"])
 	MaxSoundchannelCheckbox.text:SetTextColor(1, 1, 1, 1)
 	if (getglobal("MaxSoundchannelCheckbox"):GetChecked() ~= BloodlustMaxSoundchannelBoolean) then
 		getglobal("MaxSoundchannelCheckbox"):SetChecked(BloodlustMaxSoundchannelBoolean);
@@ -462,20 +462,20 @@ local function PanelCreation()
     BloodlustSoundResetDescription:SetPoint("TOPLEFT", MaxSoundchannelCheckbox, "BOTTOMLEFT", 0, -15)
 	BloodlustSoundResetDescription:SetWidth(BloodlustMusic.panel.scrollFrame:GetWidth() - scrollbarOffset)
 	BloodlustSoundResetDescription:SetJustifyH("LEFT")
-	BloodlustSoundResetDescription:SetText("Sound not reset properly after Hero? Try setting your in-game volume at Main Menu -> System -> Sound to your preferred normal level, then click the button below.")
+	BloodlustSoundResetDescription:SetText(L["Sound not reset properly after Hero? Try setting your in-game volume at Main Menu -> System -> Sound to your preferred normal level, then click the button below."])
 
 	local SoundResetButton = CreateFrame("Button","SoundResetButton", BloodlustMusic.panel.scrollChild,"UIPanelButtonTemplate")
 	SoundResetButton:SetWidth(128)
 	SoundResetButton:SetPoint("TOPLEFT", BloodlustSoundResetDescription, "BOTTOMLEFT", 0, -8)
 	SoundResetButton.text = _G["SoundResetButton".."Text"]
-	SoundResetButton:SetText("Sound Reset")
+	SoundResetButton:SetText(L["Sound Reset"])
 	SoundResetButton:SetScript("OnClick", function(self, arg1)
 		if (BloodlustMusic.isSongPlaying) then
-			print(BloodlustMusic.announcerHeader .. "Resetting prevented, please try again after Hero has ended")
+			print(BloodlustMusic.announcerHeader ..L["Resetting prevented, please try again after Hero has ended"])
 		else
 			BloodlustSoundchannelscache = GetCVar("Sound_NumChannels")
 			BloodlustVolumecache = tonumber(GetCVar(BloodlustMusic.soundVolumeTable[BloodlustSoundchannelNumber]))
-			print(BloodlustMusic.announcerHeader .. "Regular volume level for "  .. BloodlustMusic.soundChannelNames[BloodlustSoundchannelNumber] .. " is now set to: " .. math.floor(BloodlustVolumecache*100) .. "%")
+			print(BloodlustMusic.announcerHeader .. L["Regular volume level for "]  .. BloodlustMusic.soundChannelNames[BloodlustSoundchannelNumber] .. L[" is now set to: "] .. math.floor(BloodlustVolumecache*100) .. "%")
 		end
 	end)
 
@@ -485,7 +485,7 @@ local function PanelCreation()
     TestingPlayButtonDescription:SetPoint("TOPLEFT", SoundResetButton, "BOTTOMLEFT", 0, -15)
 	TestingPlayButtonDescription:SetWidth(BloodlustMusic.panel.scrollFrame:GetWidth() - scrollbarOffset)
 	TestingPlayButtonDescription:SetJustifyH("LEFT")
-	TestingPlayButtonDescription:SetText("Everything set? Press the button below for a 10 second test song. Enter a number between 1 and 60 to test a specific song. Want a random one? Leave it empty or place a 0. Please note: no other songs can play at the same time.")
+	TestingPlayButtonDescription:SetText(L["Everything set? Press the button below for a 10 second test song. Enter a number between 1 and 60 to test a specific song. Want a random one? Leave it empty or place a 0. Please note: no other songs can play at the same time."])
 
 	local TestingPlayButtonEditbox = CreateFrame("EditBox", "InputBoxTemplateTest", BloodlustMusic.panel.scrollChild, "InputBoxTemplate")
 	TestingPlayButtonEditbox:SetWidth(30)
@@ -503,18 +503,18 @@ local function PanelCreation()
 	TestingPlayButton:SetWidth(128)
 	TestingPlayButton:SetPoint("TOPLEFT", TestingPlayButtonDescription, "BOTTOMLEFT", 0, -15)
 	TestingPlayButton.text = _G["TestingPlayButton".."Text"]
-	TestingPlayButton:SetText("Play a test song")
+	TestingPlayButton:SetText(L["Play a test song"])
 	TestingPlayButton:SetScript("OnClick", function(self, arg1)
 		if (BloodlustMusic.isSongPlaying) then
-			print(BloodlustMusic.announcerHeader .. "Song test prevented. A song is already playing.")
+			print(BloodlustMusic.announcerHeader .. L["Song test prevented. A song is already playing."])
 		elseif(BloodlustMusicMute) then
-			print(BloodlustMusic.announcerHeader .. "Song test prevented. BloodlustMusic is currently muted.")
+			print(BloodlustMusic.announcerHeader .. L["Song test prevented. BloodlustMusic is currently muted."])
 		else
-			print(BloodlustMusic.announcerHeader .. "Test song started");
+			print(BloodlustMusic.announcerHeader .. L["Test song stopped"]);
 			SongPlayerPrimer(BloodlustMusic.currentSongSpellID, TestingPlayButtonEditbox:GetNumber(), 0)
 			C_Timer.After(10, function() -- wait a bit
 				StopSong(false)
-			print(BloodlustMusic.announcerHeader .. "Test song stopped")
+			print(BloodlustMusic.announcerHeader .. L["Test song stopped"])
 			end)
 		end
 	end)
@@ -525,7 +525,7 @@ local function PanelCreation()
     BloodlustSongListButtonDescription:SetPoint("TOPLEFT", TestingPlayButton, "BOTTOMLEFT", 0, -15)
 	BloodlustSongListButtonDescription:SetWidth(BloodlustMusic.panel.scrollFrame:GetWidth() - scrollbarOffset)
 	BloodlustSongListButtonDescription:SetJustifyH("LEFT")
-	BloodlustSongListButtonDescription:SetText("Want to customise what songs you hear? Below you can tick the boxes to turn individual songs on or off. You can press the edit button to change the names and change the song file itself. This way you can introduce your own custom songs without digging in the code.\n \nMessed up? Each edit button has a default button. Messed up a lot? At the bottom you'll see a button to put all songs back to their hard-coded values.\n\nFor more info on the whole process, please visit the addon site.")
+	BloodlustSongListButtonDescription:SetText(L["Want to customise what songs you hear? Below you can tick the boxes to turn individual songs on or off. You can press the edit button to change the names and change the song file itself. This way you can introduce your own custom songs without digging in the code.\n \nMessed up? Each edit button has a default button. Messed up a lot? At the bottom you'll see a button to put all songs back to their hard-coded values.\n\nFor more info on the whole process, please visit the addon site."])
 
 	--Dummy table for variable purposes
 	local SongCheckboxes = { };
@@ -578,7 +578,7 @@ local function PanelCreation()
 		SongEditButtons[a]:SetPoint("TOPLEFT", SongCheckboxes[a].text, "TOPRIGHT", 0, -1.8)
 		SongEditButtons[a]:SetWidth(SongEditButtonWidth)
 		SongEditButtons[a].text = _G["TestingButton".."Text"]
-		SongEditButtons[a]:SetText("Edit")
+		SongEditButtons[a]:SetText(L["Edit"])
 		SongEditButtons[a]:SetScript("OnClick", function(self, arg1)
 			InputPanel(a)
 		end)
@@ -590,9 +590,9 @@ local function PanelCreation()
 	SongDefaultButton:SetWidth(170)
 	SongDefaultButton:SetPoint("CENTER", SongEditButtons[(math.ceil(table.getn(BloodlustSongObjectTable)/2))], "BOTTOMRIGHT",  0, -40)
 	SongDefaultButton.text = _G["SongDefaultButton".."Text"]
-	SongDefaultButton:SetText("Set all songs to default")
+	SongDefaultButton:SetText(L["Set all songs to default"])
 	SongDefaultButton:SetScript("OnClick", function(self, arg1)
-		ConfirmPanel(nil, "Default", "\n |cFFFFD100WARNING:|r This will set all songs back to their default, hard-coded values, even your custom songs. \n \n \n This action cannot be reversed and any change you have made to any song will have to be entered manually again. \n \n \n Accept and reload?");
+		ConfirmPanel(nil, "Default", L["\n WARNING: This will set all songs back to their default, hard-coded values, even your custom songs. \n \n \n This action cannot be reversed and any change you have made to any song will have to be entered manually again. \n \n \n Accept and reload?"]);
 	end)
 
 	--Description for the Favored Friend feature
@@ -600,7 +600,7 @@ local function PanelCreation()
     FavoredFriendDescription:SetPoint("TOPLEFT", SongCheckboxes[(math.ceil(table.getn(BloodlustSongObjectTable)/2))], "BOTTOMLEFT", 10 , -60)
 	FavoredFriendDescription:SetWidth(BloodlustMusic.panel.scrollFrame:GetWidth() - scrollbarOffset)
 	FavoredFriendDescription:SetJustifyH("LEFT")
-	FavoredFriendDescription:SetText("Want to hear a certain song when a certain player casts Hero? You can by using the Favored Friend feature below. Just click the edit button and enter some values in the screen that pops up. You'll need the name of your friend, the title of the song, and the filename. The song can be either a song in the default list or a custom one, following the same rules for custom songs as above. More info on the addon page.")
+	FavoredFriendDescription:SetText(L["Want to hear a certain song when a certain player casts Hero? You can by using the Favored Friend feature below. Just click the edit button and enter some values in the screen that pops up. You'll need the name of your friend, the title of the song, and the filename. The song can be either a song in the default list or a custom one, following the same rules for custom songs as above. More info on the addon page."])
 
 	--Dummy table for variable purposes
 	local FriendSongCheckboxes = { };
@@ -627,28 +627,28 @@ local function PanelCreation()
 		--if the friend has a name at the given index
 		if BloodlustFavoredFriendTable[a]["Name"] ~= "" then
 			--set the name
-			FriendSongCheckboxes[a].text:SetText(a .. ". |cFFFFD100'" .. BloodlustFavoredFriendTable[a]["Name"] .."'|r will play: " .. BloodlustFavoredFriendTable[a]["Title"])
+			FriendSongCheckboxes[a].text:SetText(a .. ". |cFFFFD100'" .. BloodlustFavoredFriendTable[a]["Name"] ..L["'will play: "] .. BloodlustFavoredFriendTable[a]["Title"])
 			--create a test button next to it
 			FriendTestBoxes[a] = CreateFrame("Button", "SongEditButton ".. a, BloodlustMusic.panel.scrollChild, "UIPanelButtonTemplate")
 			FriendTestBoxes[a]:SetPoint("TOPLEFT", FriendSongCheckboxes[a].text, "TOPRIGHT", 0, -1.8)
 			FriendTestBoxes[a]:SetWidth(SongEditButtonWidth)
 			FriendTestBoxes[a].text = _G["FriendTestBoxes".."Text"]
-			FriendTestBoxes[a]:SetText("Test")
+			FriendTestBoxes[a]:SetText(L["Test"])
 			FriendTestBoxes[a]:SetScript("OnClick", function(self, arg1)
 				if (BloodlustMusic.isSongPlaying) then
-					print(BloodlustMusic.announcerHeader .. "Song test prevented. A song is already playing.")
+					print(BloodlustMusic.announcerHeader .. L["Song test prevented. A song is already playing."])
 				elseif(BloodlustMusicMute) then
-					print(BloodlustMusic.announcerHeader .. "Song test prevented. BloodlustMusic is currently muted.")
+					print(BloodlustMusic.announcerHeader .. L["Song test prevented. BloodlustMusic is currently muted."])
 				elseif not(BloodlustFavoredFriendTable[a]["Enabled"]) then
-					print(BloodlustMusic.announcerHeader .. "Song test prevented. The song is not enabled.")
+					print(BloodlustMusic.announcerHeader .. L["Song test prevented. The song is not enabled."])
 				elseif (BloodlustFavoredFriendTable[a]["Title"] == "" or BloodlustFavoredFriendTable[a]["Path"] == "") then
-					print(BloodlustMusic.announcerHeader .. "Song test prevented. Please fill in all the details.")	
+					print(BloodlustMusic.announcerHeader .. L["Song test prevented. Please fill in all the details."])	
 				else
-					print(BloodlustMusic.announcerHeader .. "Test song started");
+					print(BloodlustMusic.announcerHeader .. L["Test song stopped"]);
 					SongPlayerPrimer(BloodlustMusic.currentSongSpellID, 0, a)
 					C_Timer.After(10, function() -- wait a bit
 						StopSong(false)
-					print(BloodlustMusic.announcerHeader .. "Test song stopped")
+					print(BloodlustMusic.announcerHeader .. L["Test song stopped"])
 					end)
 				end
 			end)
@@ -689,7 +689,7 @@ local function PanelCreation()
 		FriendEditButtons[a]:SetPoint("TOPLEFT", FriendSongCheckboxes[a].text, "TOPRIGHT", SongEditButtonWidth + 15, -1.8)
 		FriendEditButtons[a]:SetWidth(SongEditButtonWidth)
 		FriendEditButtons[a].text = _G["TestingButton".."Text"]
-		FriendEditButtons[a]:SetText("Edit")
+		FriendEditButtons[a]:SetText(L["Edit"])
 		FriendEditButtons[a]:SetScript("OnClick", function(self, arg1)
 			FriendPanel(a)
 		end)
@@ -700,16 +700,16 @@ local function PanelCreation()
 	FriendDefaultButton:SetWidth(170)
 	FriendDefaultButton:SetPoint("CENTER", FriendSongCheckboxes[(table.getn(FriendSongCheckboxes))].text, "CENTER",  27, -40)
 	FriendDefaultButton.text = _G["FriendDefaultButton".."Text"]
-	FriendDefaultButton:SetText("Clear Favored Friend List")
+	FriendDefaultButton:SetText(L["Clear Favored Friend List"])
 	FriendDefaultButton:SetScript("OnClick", function(self, arg1)
-		ConfirmPanel(nil, "DefaultAllFriends", "\n |cFFFFD100WARNING:|r This will clear the entire list of Favored Friends and all checkboxes will be turned OFF.\n \n \n This action cannot be reversed and any change you have made to this list will have to be entered manually again. \n \n \n Accept and reload?");
+		ConfirmPanel(nil, "DefaultAllFriends", L["\n WARNING: This will clear the entire list of Favored Friends and all checkboxes will be turned OFF.\n \n \n This action cannot be reversed and any change you have made to this list will have to be entered manually again. \n \n \n Accept and reload?"]);
 	end)
 
 	--Checkbox to mute BloodlustMusic
 	local MuteCheckbox = CreateFrame("CheckButton", "MuteCheckbox", BloodlustMusic.panel.scrollChild, "UICheckButtonTemplate")
 	MuteCheckbox:SetPoint("TOPRIGHT", (-scrollbarOffset - 20), -3)
 	MuteCheckbox.text:SetFontObject("GameFontNormal", "Randomname")
-	MuteCheckbox.text:SetText("|cFFFFD100Mute|r")
+	MuteCheckbox.text:SetText(L["Mute"])
 	MuteCheckbox.text:SetWidth(300)
 	MuteCheckbox.text:SetJustifyH("LEFT")
 	MuteCheckbox.text:SetTextColor(1, 1, 1, 1)
@@ -721,11 +721,11 @@ local function PanelCreation()
 	MuteCheckbox:SetScript("OnClick", function(self,event,arg1)
 		if (self:GetChecked()) then
 			BloodlustMusicMute = true;
-			print(BloodlustMusic.announcerHeader .. "The addon is now muted, no songs will play.")
+			print(BloodlustMusic.announcerHeader .. L["The addon is now muted, no songs will play."])
 		else
 
 			BloodlustMusicMute = false;
-			print(BloodlustMusic.announcerHeader .. "The addon is now unmuted, enjoy the songs :)")
+			print(BloodlustMusic.announcerHeader .. L["The addon is now unmuted, enjoy the songs :)"])
 		end
 	end)
 
