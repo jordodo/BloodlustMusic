@@ -1,4 +1,4 @@
-## Interface: 110005, 110007, 110100
+## Interface: 110005, 110007, 110100, 110105, 110107, 110200
 ## Title: Bloodlust Music Remix
 ## Notes: A bloated, over-engineered Addon that plays music during Bloodlust
 ## Original Author: Yellowdevil-ArgentDawn
